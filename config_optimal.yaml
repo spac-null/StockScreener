@@ -1,0 +1,274 @@
+# OPTIMAL Stock Screener Configuration
+# Designed to catch RGTI-like opportunities at $1.20 stage
+# Two-tier system: High conviction + Early detection
+
+api:
+  polygon_api_key: "Y2Qew5cni67EIpHHQshd7Pj6Rl1DFZd6"
+
+email:
+  enabled: true
+  smtp_server: "send.one.com"
+  smtp_port: 587
+  sender_email: "crypto@jaschablume.nl"
+  sender_password: "CrYpt0W1zz"
+  receiver_email: "musabanana@protonmail.com"
+
+screening:
+  # Price range (optimized for explosive potential)
+  min_price: 0.50              # Lower floor = more upside potential
+  max_price: 3.00              # Sweet spot: cheap enough for 5-10x gains
+
+  # TIER 1: High Conviction Alerts
+  tier1:
+    min_daily_change: 5.0      # Strong momentum
+    min_volume: 1000000        # High liquidity
+    news_lookback_hours: 24    # Fresh catalysts
+    enabled: true
+
+  # TIER 2: Early Detection (Watchlist)
+  tier2:
+    min_daily_change: 1.5      # Catches accumulation
+    min_volume: 300000         # Before it's popular
+    news_lookback_hours: 72    # Developing stories
+    min_consecutive_alerts: 2  # Need 2+ alerts to qualify
+    enabled: true              # Set to false if too noisy
+
+  # Base requirements (both tiers)
+  max_notifications: 8         # Up from 5 (2-tier system needs more)
+  scan_interval: 10800         # 3 hours instead of 4 (catch moves faster)
+
+  # Enhanced sector targeting (RGTI-like opportunities)
+  target_sectors:
+    # Quantum (RGTI sector)
+    - quantum
+    - quantum computing
+    - quantum network
+    - quantum cryptography
+    - quantum sensing
+
+    # AI (massive megatrend)
+    - artificial intelligence
+    - AI agents
+    - machine learning
+    - autonomous AI
+    - AGI
+    - neural network
+
+    # Gene Editing (next biotech wave)
+    - gene therapy
+    - gene editing
+    - CRISPR
+    - base editing
+    - in vivo
+    - CAR-T
+
+    # Fusion Energy (next quantum?)
+    - fusion
+    - fusion energy
+    - nuclear fusion
+    - tokamak
+    - fusion reactor
+
+    # Space Tech
+    - space
+    - satellite
+    - asteroid mining
+    - lunar
+    - space-based
+    - orbital
+
+    # Advanced Computing
+    - neuromorphic
+    - photonic computing
+    - optical computing
+    - DNA computing
+
+    # Battery/Energy Storage
+    - solid-state battery
+    - battery technology
+    - energy storage
+    - supercapacitor
+
+    # Semiconductors
+    - chip
+    - semiconductor
+    - photonics
+    - silicon carbide
+    - gallium nitride
+
+    # Robotics/Automation
+    - robotics
+    - humanoid robot
+    - automation
+    - autonomous
+
+    # Climate Tech
+    - carbon capture
+    - direct air capture
+    - climate tech
+    - green hydrogen
+
+  # Enhanced catalyst detection
+  catalyst_keywords_tier1:
+    # Major partnerships (RGTI had these)
+    - partnership with Google
+    - partnership with Amazon
+    - partnership with Microsoft
+    - partnership with AWS
+    - partnership with IBM
+    - partnership with NASA
+    - partnership with Meta
+    - partnership with Apple
+    - partnership with NVIDIA
+
+    # Government/Military
+    - DOD contract
+    - government contract
+    - military contract
+    - DARPA
+    - defense contract
+
+    # Major breakthroughs
+    - breakthrough
+    - world first
+    - industry first
+    - achieved
+    - milestone
+    - success
+
+    # FDA/Regulatory (biotech)
+    - FDA approval
+    - FDA fast track
+    - breakthrough therapy
+    - orphan drug
+    - clinical trial success
+
+    # Financial
+    - acquisition
+    - merger
+    - buyout offer
+    - going private
+    - strategic investment
+
+    # Technical achievements
+    - patent granted
+    - patent awarded
+    - record performance
+    - surpasses
+    - exceeds expectations
+
+  catalyst_keywords_tier2:
+    # Early signals
+    - announces
+    - collaboration
+    - partnership
+    - agreement
+    - contract
+    - trial
+    - study
+    - research
+    - development
+    - progress
+    - advance
+    - innovation
+    - new technology
+    - pilot program
+    - proof of concept
+
+  # News lookback
+  news_lookback_hours: 48
+
+  # Volume analysis
+  volume_surge_threshold: 1.5  # Alert if 1.5x average volume
+  volume_lookback_days: 20     # Compare to 20-day average
+
+# Expanded eToro EU-available tickers
+# Focus on high-potential sectors with RGTI-like characteristics
+etoro_available:
+  # Current quantum/tech plays
+  - IONQ         # Quantum computing (direct RGTI competitor)
+  - QUBT         # Quantum computing
+  - ARQQ         # Quantum tech (if available)
+
+  # AI plays
+  - PLTR         # Palantir (AI platforms)
+  - AI           # C3.ai
+  - BBAI         # BigBear.ai
+  - SOUN         # SoundHound AI
+
+  # Gene editing/biotech
+  - CRSP         # CRISPR Therapeutics
+  - NTLA         # Intellia (gene editing)
+  - BEAM         # Beam Therapeutics (base editing)
+  - EDIT         # Editas Medicine
+  - VRTX         # Vertex (gene therapy leader)
+  - FATE         # Fate Therapeutics (cell therapy)
+  - BLUE         # Bluebird Bio (gene therapy)
+
+  # Space/aerospace
+  - ASTS         # AST SpaceMobile (satellite)
+  - SPCE         # Virgin Galactic
+  - RKLB         # Rocket Lab
+  - PL           # Planet Labs (satellite imaging)
+
+  # Battery/EV tech
+  - QS           # QuantumScape (solid-state battery)
+  - ENVX         # Enovix (battery tech)
+  - STEM         # Stem Inc (energy storage)
+
+  # Semiconductors
+  - SLAB         # Silicon Labs
+  - MPWR         # Monolithic Power
+  - CRUS         # Cirrus Logic
+
+  # Current low-priced eToro stocks
+  - PLUG         # Hydrogen fuel cells
+  - LCID         # Lucid (EV)
+  - BLNK         # Blink Charging
+  - CLSK         # CleanSpark (bitcoin mining + AI)
+  - MARA         # Marathon Digital (bitcoin + energy)
+  - RIOT         # Riot Platforms (bitcoin + AI)
+  - SNDL         # Sundial (cannabis + wellness)
+  - TLRY         # Tilray (cannabis)
+  - CGC          # Canopy Growth
+  - ACB          # Aurora Cannabis
+  - SOFI         # SoFi (fintech)
+  - CLOV         # Clover Health (AI healthcare)
+  - FCEL         # FuelCell Energy (hydrogen)
+  - GEVO         # Gevo (sustainable aviation fuel)
+  - NNDM         # Nano Dimension (3D printing)
+  - BNGO         # Bionano Genomics (genetic testing)
+  - OCGN         # Ocugen (gene therapy)
+
+  # Original list
+  - BCAB
+  - OPTT
+  - CAN
+  - CENN
+  - CLNE
+  - CRON
+  - FUBO
+  - GSAT
+  - ICLN
+  - LOGC
+
+logging:
+  enabled: true
+  log_file: "stock_screener_optimal.log"
+  log_level: "INFO"
+
+risk_management:
+  stop_loss_percentage: 10
+  disclaimer: "⚠️ NOT FINANCIAL ADVICE. High-risk stocks. Possible total loss. Always do your own research."
+
+# Alert customization
+alerts:
+  tier1_subject: "🚀 HIGH CONVICTION: {count} Strong Opportunities"
+  tier2_subject: "📋 WATCHLIST: {count} Early Signals Detected"
+
+  tier1_emoji: "🚀"
+  tier2_emoji: "👀"
+
+  include_sector_trends: true     # Show if entire sector is hot
+  include_volume_analysis: true   # Show volume vs average
+  include_similar_stocks: true    # Show other stocks in same sector
