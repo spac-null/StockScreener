@@ -1,0 +1,126 @@
+╔═══════════════════════════════════════════════════════════════════╗
+║              STOCK SCREENER - QUICK REFERENCE CARD                 ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+📂 LOCATION: /Users/stargatesgx/code/StockScreener
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎮 DOUBLE-CLICK SCRIPTS:
+
+  Start_Screener.command          → Start screener (shows Terminal)
+  Stop_Screener.command            → Stop all screeners
+  Check_Status.command             → View status & recent logs
+  Switch_to_Optimal.command        → Use aggressive config
+  Switch_to_Conservative.command   → Use conservative config
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚙️ CONFIGURATIONS:
+
+┌──────────────────┬─────────────────┬─────────────────────────┐
+│ Feature          │ CONSERVATIVE    │ OPTIMAL                 │
+├──────────────────┼─────────────────┼─────────────────────────┤
+│ Daily Change     │ 3%              │ Tier 1: 5% / Tier 2: 1.5% │
+│ Volume           │ 500K            │ Tier 1: 1M / Tier 2: 300K │
+│ News Window      │ 24 hours        │ Tier 1: 24h / Tier 2: 72h │
+│ Tickers          │ 31 stocks       │ 60+ stocks              │
+│ Scans            │ Every 4 hours   │ Every 3 hours           │
+│ Alerts/Week      │ 2-4             │ 10-20                   │
+│ Quality          │ High            │ Mixed (2 tiers)         │
+│ Best For         │ Part-time       │ Active traders          │
+└──────────────────┴─────────────────┴─────────────────────────┘
+
+Current: config.yaml (whatever is active)
+Backup: config_backup.yaml (before switch)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📖 DOCUMENTATION:
+
+  README.md                    → Complete guide (original)
+  RUNNING_NOW.md              → Quick reference (current setup)
+  CONFIG_COMPARISON.md        → Current vs Optimal analysis
+  NEWS_SOURCES_TO_WATCH.md   → Where to monitor for catalysts
+  QUICK_REFERENCE.txt         → This file
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📧 EMAIL ALERTS:
+
+  Receiver: musabanana@protonmail.com
+  Frequency: When candidates found
+  Contains: Ticker, price, catalysts, risk warnings
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 RGTI ANALYSIS SUMMARY:
+
+  Entry Point: $1.20 (late 2024)
+  Peak: $10+ (early 2025)
+  Gain: ~733% (8.3x)
+
+  CONSERVATIVE would catch at: $1.30 (Tuesday alert)
+  OPTIMAL would catch at: $1.18 (Monday Tier 2 alert)
+  
+  Difference: 10% earlier entry = better position building
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 RECOMMENDED WORKFLOW:
+
+  1. Double-click: Start_Screener.command
+  2. Keep Terminal open (can minimize)
+  3. Check email for alerts
+  4. Research tickers on eToro
+  5. Decide: Trade or watchlist
+  6. Always set stop-loss (10%)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔧 CUSTOMIZATION:
+
+  Edit config.yaml to adjust:
+  - min_daily_change (lower = more alerts)
+  - min_volume (lower = include smaller stocks)
+  - scan_interval (lower = more frequent scans)
+  - Add/remove tickers from etoro_available list
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️  RISK WARNINGS:
+
+  • NOT financial advice
+  • Penny stocks = high risk
+  • Possible total loss
+  • Always use stop-losses
+  • Only invest disposable income
+  • Do your own research
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 PRO TIP:
+
+  Set up Google Alerts for:
+  - "quantum computing breakthrough"
+  - "gene therapy FDA approval"
+  - "fusion energy milestone"
+  
+  When sector news hits → Research ALL stocks in that sector!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 MY RECOMMENDATION:
+
+  Try OPTIMAL for 2 weeks → Evaluate → Customize
+
+  Too noisy? Switch to CONSERVATIVE
+  Missing opportunities? Stay with OPTIMAL
+  Want both? Disable Tier 2 emails, check logs weekly
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Last Updated: 2026-01-10
+Current Config: CONSERVATIVE (config.yaml)
+Available: OPTIMAL (config_optimal.yaml)
+
