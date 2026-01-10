@@ -1,0 +1,170 @@
+# HYBRID AUTONOMOUS Configuration
+# "Set and Forget" BUT with URGENT ALERTS for time-sensitive opportunities
+# Best of both worlds: Weekly summaries + Immediate alerts for exceptional opportunities
+
+api:
+  polygon_api_key: "Y2Qew5cni67EIpHHQshd7Pj6Rl1DFZd6"
+
+email:
+  enabled: true
+  smtp_server: "send.one.com"
+  smtp_port: 587
+  sender_email: "crypto@jaschablume.nl"
+  sender_password: "CrYpt0W1zz"
+  receiver_email: "musabanana@protonmail.com"
+
+  # HYBRID MODE: Two-tier notifications
+  weekly_summary: true
+  summary_day: "Sunday"
+  summary_hour: 20
+
+  # URGENT ALERTS (immediate email for exceptional opportunities)
+  urgent_alerts_enabled: true
+  urgent_criteria:
+    min_score: 85              # Only ultra-high scores
+    min_daily_change: 8.0      # Strong momentum (8%+)
+    min_volume_multiplier: 3.0 # 3x average volume = unusual
+    require_catalyst: true     # Must have news catalyst
+    max_per_day: 2             # Cap urgent alerts (avoid spam)
+
+screening:
+  # Initial thresholds (will auto-adjust)
+  min_price: 0.5
+  max_price: 3.0
+  min_daily_change: 2.0
+  min_volume: 400000
+
+  scan_interval: 10800        # 3 hours (more frequent for urgent detection)
+  max_notifications: 15
+
+  news_lookback_hours: 48
+
+  target_sectors:
+    - quantum
+    - quantum computing
+    - AI
+    - artificial intelligence
+    - gene therapy
+    - gene editing
+    - CRISPR
+    - fusion
+    - fusion energy
+    - space
+    - satellite
+    - solid-state battery
+    - battery technology
+    - renewable
+    - semiconductor
+    - photonics
+    - robotics
+    - neuromorphic
+
+  # URGENT CATALYST KEYWORDS (immediate alert triggers)
+  urgent_catalyst_keywords:
+    - "FDA approval"
+    - "approved by FDA"
+    - "breakthrough therapy"
+    - "fast track"
+    - "partnership with Google"
+    - "partnership with Amazon"
+    - "partnership with Microsoft"
+    - "partnership with NASA"
+    - "DOD contract"
+    - "government contract"
+    - "acquisition"
+    - "merger announced"
+    - "buyout offer"
+    - "breakthrough"
+    - "world first"
+    - "milestone achieved"
+    - "clinical trial success"
+    - "positive results"
+    - "exceeds expectations"
+    - "record performance"
+
+# Starting ticker list (will auto-expand)
+etoro_available:
+  # High-volatility targets (most likely for urgent opportunities)
+  - IONQ
+  - QUBT
+  - RGTI
+  - CRSP
+  - NTLA
+  - BEAM
+  - EDIT
+  - ASTS
+  - RKLB
+  - QS
+  - ENVX
+  - AI
+  - SOUN
+  - PLTR
+  - PLUG
+  - LCID
+  - BLNK
+  - CLSK
+  - MARA
+  - RIOT
+  - SNDL
+  - TLRY
+  - SOFI
+  - CLOV
+  - FCEL
+  - GEVO
+  - NNDM
+  - BNGO
+  - OCGN
+
+# Autonomous features
+autonomous:
+  enabled: true
+  mode: "hybrid"              # NEW: hybrid mode
+
+  # Urgent alert logic
+  urgent_detection:
+    enabled: true
+    check_every_scan: true
+    duplicate_window_hours: 24   # Don't alert same ticker twice in 24h
+
+  # Auto-discovery
+  discover_new_tickers: true
+  discovery_interval_days: 7
+  max_tickers: 100
+
+  # Auto-tuning
+  auto_tune_thresholds: true
+  tune_interval_days: 7
+  target_alerts_per_day: 3
+
+  # Auto-pruning
+  prune_dead_tickers: true
+  prune_after_days: 30
+
+  # Performance tracking
+  track_performance: true
+  performance_file: "performance_history_hybrid.json"
+
+  # Health monitoring
+  auto_restart: true
+  health_check_interval: 3600
+  max_consecutive_errors: 5
+
+logging:
+  enabled: true
+  log_file: "autonomous_hybrid.log"
+  log_level: "INFO"
+
+risk_management:
+  stop_loss_percentage: 10
+  disclaimer: "⚠️ NOT FINANCIAL ADVICE. High-risk stocks. Possible total loss. Always do your own research."
+
+  # URGENT: Tighter risk management for time-sensitive trades
+  urgent_stop_loss: 8           # Tighter stop-loss for urgent trades
+  urgent_position_size: "1%"    # Smaller position for higher risk
+  urgent_take_profit: 20        # Quick profit target
+
+# Reporting
+reporting:
+  weekly_summary: true
+  urgent_alerts: true           # Track urgent alerts separately
+  include_missed_opportunities: true  # Show what you didn't get alerted on
