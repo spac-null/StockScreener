@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>StockScreener</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Stock Screener</h1>
+    <a href="/logout">Logout</a> | <a href="/premium">Go Premium</a>
+    <div>
+        <label>Max PE Ratio: <input id="pe" type="number" value="20"></label>
+        <label>Min Dividend Yield: <input id="dy" type="number" step="0.1" value="2"></label>
+        <label>Min Market Cap (B): <input id="mc" type="number" value="1"></label>
+        <label>Min YTD Return (%): <input id="ytd" type="number" value="10"></label>
+        <label>Sector: <select id="sector"><option value="">All</option><option>Technology</option><option>Healthcare</option></select></label>
+        <label>Email for Alerts: <input id="email" type="email"></label>
+        <button onclick="screen()">Screen</button>
+        <button onclick="exportCSV()">Export CSV</button>
+        <button onclick="optimize()">Optimize Portfolio</button>
+        <button onclick="setAlert()">Set Alert</button>
+    </div>
+    <div id="results"></div>
+    <script>
+        function screen() {
+            const pe = $('#pe').val();
+            const dy = $('#dy').val();
+            const mc = $('#mc').val();
+            const ytd = $('#ytd').val();
+            const sector = $('#sector').val();
+            $.post('/screen', {peRatio_max: pe, dividendYield_min: dy, marketCap_min: mc, ytd_min: ytd, sector: sector}, function(data) {
+                let html = '<table><tr><th>Name</th><th>Symbol</th><th>PE</th><th>Yield</th><th>YTD</th><th>Market Cap</th><th>Actions</th></tr>';
+                data.forEach(s => html += `<tr><td>${s.internalInstrumentDisplayName}</td><td>${s.internalSymbolFull}</td><td>${s['peRatio-TTM'] || 'N/A'}</td><td>${s.dividendYield || 'N/A'}</td><td>${s.returnYearToDate || 'N/A'}</td><td>${(s.marketCapitalization / 1e9).toFixed(2)}B</td><td><button onclick="backtest('${s.internalSymbolFull}')">Backtest</button> <button onclick="predict('${s.internalSymbolFull}')">Predict</button> <button onclick="realtime('${s.internalSymbolFull}')">Real-Time</button> <button onclick="chart('${s.internalSymbolFull}')">Chart</button></td></tr>`);
+                html += '</table>';
+                $('#results').html(html);
+            });
+        }
+        function exportCSV() {
+            const pe = $('#pe').val();
+            const dy = $('#dy').val();
+            const mc = $('#mc').val();
+            const ytd = $('#ytd').val();
+            const sector = $('#sector').val();
+            const data = {peRatio_max: pe, dividendYield_min: dy, marketCap_min: mc, ytd_min: ytd, sector: sector};
+            $.post('/export', data, function(csv) {
+                const blob = new Blob([csv], {type: 'text/csv'});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'screened_stocks.csv';
+                a.click();
+            });
+        }
+        function backtest(symbol) {
+            $.post('/backtest', {symbol: symbol}, function(data) {
+                alert(`Backtest for ${data.symbol}: Initial $10k -> $${data.final.toFixed(2)} (${data.return.toFixed(2)}% return)`);
+            });
+        }
+        function optimize() {
+            const pe = $('#pe').val();
+            const dy = $('#dy').val();
+            const mc = $('#mc').val();
+            const ytd = $('#ytd').val();
+            const sector = $('#sector').val();
+            const data = {peRatio_max: pe, dividendYield_min: dy, marketCap_min: mc, ytd_min: ytd, sector: sector};
+            $.post('/optimize', data, function(result) {
+                let html = `<h3>Optimized Portfolio</h3><p>Expected Return: ${result.expected_return.toFixed(2)}%, Risk Score: ${result.risk_score.toFixed(2)}</p><ul>`;
+                result.portfolio.forEach(p => html += `<li>${p.symbol}: ${p.weight * 100}% weight, ${p.return}% return</li>`);
+                html += '</ul>';
+                $('#results').html(html);
+            });
+        }
+        function predict(symbol) {
+            $.post('/predict', {symbol: symbol}, function(data) {
+                alert(`Prediction for ${data.symbol}: ${data.predicted_ytd_return.toFixed(2)}% YTD return`);
+            });
+        }
+        function setAlert() {
+            const email = $('#email').val();
+            if (!email) return alert('Enter email');
+            $.post('/alert', {email: email, symbol: 'AAPL'}, function(data) {
+                alert(data.message);
+            });
+        }
+        function realtime(symbol) {
+            $.post('/realtime', {symbol: symbol}, function(data) {
+                alert(`Real-time price for ${data.symbol}: $${data.price}`);
+            });
+        }
+        function chart(symbol) {
+            $.post('/chart', {symbol: symbol}, function(data) {
+                Plotly.newPlot('results', JSON.parse(data).data, JSON.parse(data).layout);
+            });
+        }
+    </script>
+</body>
+</html>

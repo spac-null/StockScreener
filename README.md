@@ -1,34 +1,181 @@
-# 🚀 High-Potential Stock Screener
+# 🚀 Enhanced Stock Screener v2.0
+## Higher ROI, Better Protection
 
-A Python-based stock screening tool designed to identify high-potential low-priced stocks (<$5) available on eToro EU, focusing on catalyst-driven momentum opportunities similar to RGTI's 1000% gains.
+A sophisticated Python-based stock screening system designed to identify high-potential catalyst-driven opportunities in eToro EU, with enhanced risk management and quality filtering for superior risk-adjusted returns.
+
+### ✨ **NEW v2.0 Features**
+- 🛡️ **Enhanced Risk Management**: 2% max position sizing, automatic stop-losses, scale-out take profits
+- 📊 **Fundamental Analysis**: Revenue growth, debt/equity ratios, market cap filters
+- 📈 **Technical Indicators**: RSI, volume surge detection for optimal timing
+- 📋 **Performance Tracking**: Complete trade history with win rates and P&L analytics
+- 🎯 **Quality Filters**: Weed out weak companies before they reach your alerts
+- 🔍 **Multi-Factor Scoring**: Combines momentum, fundamentals, and technicals (100-point scale)
+
+### 🎯 **Strategy Evolution**
+- **v1.0**: Basic catalyst momentum (high risk, high reward)
+- **v2.0**: Quality-filtered momentum (higher ROI potential, better protection)
 
 ## ⚠️ DISCLAIMER
 
 **THIS IS NOT FINANCIAL ADVICE.** This tool is for educational and informational purposes only. Penny stocks are extremely high-risk investments with potential for total loss. Always conduct your own research and consult with a licensed financial advisor before making investment decisions.
 
-## 🎯 Features
+## 🎯 Enhanced Features v2.0
 
-- **Regional Filter**: Pre-configured with eToro EU-available tickers
-- **Smart Screening**: Filters by price ($0.10-$5), daily change (>5%), volume (>1M)
-- **Catalyst Detection**: Analyzes recent news (24h) for positive catalysts
-- **Sector Focus**: Targets biotech, renewables, EV, crypto, AI, quantum computing
-- **Intelligent Notifications**: Only alerts on top 3-5 opportunities to avoid spam
-- **24/7 Operation**: Runs continuously with 4-hour scan cycles
-- **Email Alerts**: Automatic email notifications with detailed analysis
-- **Risk Management**: Includes stop-loss suggestions and eToro trading steps
-- **Comprehensive Logging**: Full audit trail of all screening activity
+### Core Screening Engine
+- **Regional Filter**: Pre-configured with eToro EU-available tickers (60+ stocks)
+- **Multi-Factor Scoring**: 100-point system combining momentum, fundamentals, technicals
+- **Quality Filters**: Revenue growth >10%, debt/equity <2.0, market cap >$50M
+- **Technical Analysis**: RSI, volume surge patterns, trend confirmation
+- **Catalyst Detection**: Enhanced news analysis with 48h lookback
+
+### Risk Management System
+- **Position Sizing**: Max 2% of portfolio per trade
+- **Stop Losses**: Automatic 10% stop-loss with 5% trailing stops
+- **Take Profits**: Scale out at 20%, 50%, 100% gains
+- **Sector Limits**: Max 10% portfolio exposure per sector
+- **Portfolio Protection**: Max 20% drawdown limits
+
+### Performance & Analytics
+- **Trade Tracking**: Complete P&L history with win rates
+- **Sector Analysis**: Performance breakdown by sector/catalyst type
+- **Risk Metrics**: Sharpe ratio, max drawdown, holding periods
+- **Continuous Learning**: Adapts based on historical performance
+
+### Operational Features
+- **Intelligent Notifications**: Quality-filtered alerts (2-5/week vs 10-20 spam)
+- **24/7 Operation**: Runs continuously with 3-hour scan cycles
+- **Email Alerts**: Enhanced notifications with risk management plans
+- **Comprehensive Logging**: Full audit trail with performance metrics
 
 ## 📋 Prerequisites
 
 - Python 3.8 or higher
-- Polygon.io API key (free tier available at https://polygon.io)
-- Email account for notifications (Gmail recommended)
-- eToro account (for trading the identified stocks)
+- **Polygon.io API key** (free tier: https://polygon.io) - For stock data & news
+- **Alpha Vantage API key** (free tier: https://alphavantage.co) - For fundamentals
+- **News API key** (optional, free tier: https://newsapi.org) - For enhanced news analysis
+- Email account for notifications (Gmail/recommended)
+- eToro account for trading the identified opportunities
 
-## 🔧 Installation
+## 🔒 Security & API Keys
 
-### 1. Clone or Download
+### ⚠️ IMPORTANT: API Key Security
+This project has been updated to use environment variables for security. **NEVER commit API keys to git!**
 
+#### 1. Create .env file:
+```bash
+cp .env.example .env  # Or create manually
+```
+
+#### 2. Add your API keys to .env:
+```bash
+# Required
+POLYGON_API_KEY=your_polygon_key_here
+ALPHA_VANTAGE_API_KEY=your_alpha_vantage_key_here
+NEWS_API_KEY=your_news_api_key_here
+EMAIL_PASSWORD=your_email_password_here
+```
+
+#### 3. The system automatically loads these securely.
+
+### 🛡️ Security Features
+- API keys stored in environment variables (not in code)
+- .env file excluded from git (.gitignore protected)
+- No hardcoded secrets in any scripts
+- All sensitive data uses ${VAR_NAME} substitution
+
+## 🌐 Dynamic eToro Stock Discovery
+
+### ⚠️ **IMPORTANT WARNING**
+Dynamic scraping of eToro's screener may violate their terms of service. Use at your own risk and consider the ethical implications.
+
+### How Dynamic Scraping Works (2024-2026 Trending Sectors)
+1. **Sector-Focused**: Targets high-potential trending sectors instead of scraping everything
+2. **Anti-Detection**: Random delays, user-agent rotation, gentle scrolling
+3. **Quality First**: Applies fundamental filters (market cap, revenue growth, debt ratios)
+4. **Trending Priority**: Focuses on AI, quantum, biotech, clean energy, semiconductors
+5. **Fallback Safety**: Uses your configured stock list if scraping fails
+
+### Setup Dynamic Scraping
+```yaml
+# In config.yaml
+etoro_dynamic_scraping:
+  enabled: true  # ⚠️  Set to true to enable
+  filters:
+    sectors: ['quantum', 'ai', 'biotech']  # Specify sectors or leave empty for all
+    min_price: 0.10
+    max_price: 50.00
+    min_market_cap: 50000000
+```
+
+### Requirements for Dynamic Scraping
+```bash
+pip install selenium webdriver-manager
+# Also need ChromeDriver or equivalent
+```
+
+### 🎯 Trending Sectors Targeted (2024-2026)
+
+**🚀 HIGH PRIORITY (Breakthrough Potential):**
+- **AI & Quantum Computing**: Neural networks, machine learning, quantum advantage
+- **Biotech & Gene Therapy**: CRISPR, RNA therapeutics, clinical breakthroughs
+- **Clean Energy**: Hydrogen, advanced batteries, carbon capture
+
+**📈 MEDIUM PRIORITY (Government Backed):**
+- **Semiconductors**: Chip manufacturing, advanced materials, supply chain
+- **Infrastructure**: 5G, broadband, satellite communications
+- **Cybersecurity**: Digital security, blockchain, encryption
+
+**Benefits:**
+- ✅ **Future-Focused**: Targets sectors with 5-10x growth potential
+- ✅ **Government Support**: Many backed by infrastructure bills/defense spending
+- ✅ **Innovation Driven**: Early access to breakthrough technologies
+- ✅ **Always Current**: Gets latest eToro offerings in trending sectors
+
+### Risks
+- ❌ **Terms Violation**: May breach eToro's terms
+- ❌ **Detection**: Could trigger anti-bot measures
+- ❌ **Rate Limits**: eToro may block scraping attempts
+- ❌ **Legal Risk**: Web scraping restrictions vary by jurisdiction
+
+## 🛡️ Risk Management System
+
+### Position Sizing Rules
+- **Max per trade**: 2% of total portfolio
+- **Max per sector**: 10% of total portfolio
+- **Max portfolio drawdown**: 20% before system pause
+
+### Automated Risk Controls
+- **Stop Loss**: 10% below entry price (automatic)
+- **Trailing Stop**: 5% trailing stop after 20% profit
+- **Take Profit Scaling**: 1/3 position at +20%, 1/3 at +50%, 1/3 at +100%
+
+### Quality Filters
+- **Revenue Growth**: Minimum 10% YoY growth
+- **Debt/Equity**: Maximum 2.0 ratio
+- **Market Cap**: Minimum $50M
+- **Technical**: RSI oversold (<30) preferred for entries
+
+### Example Risk-Managed Trade
+```
+Stock: IONQ @ $2.50
+Portfolio: $10,000
+Position Size: $200 (2%)
+Stop Loss: $2.25 (10% below)
+Take Profits: $200 @ $3.00 (20%), $200 @ $3.75 (50%), $200 @ $5.00 (100%)
+```
+
+## 🚀 Quick Start - Ultimate Screener
+
+### Single Powerful Script (Recommended)
+```bash
+cd /Users/stargatesgx/code/StockScreener
+python3 ultimate_screener.py
+```
+This is the **ULTIMATE STOCK SCREENER v4.0** - a single, self-contained script that combines ALL features: risk management, multi-source data, performance tracking, technical analysis, and API efficiency.
+
+### Option 2: Manual Installation
+
+#### 1. Clone or Download
 ```bash
 cd /Users/stargatesgx/code/StockScreener
 ```
